@@ -121,7 +121,7 @@ if st.button("🔮 Predict Score"):
     }
 
     try:
-        response = requests.post("http://localhost:8000/predict", json=payload)
+        response = requests.post("https://studentscorepredict-ml-project-2.onrender.com/predict", json=payload)
         if response.status_code == 200:
             result = response.json()
             score = result["predicted_exam_score"]
@@ -139,4 +139,4 @@ if st.button("🔮 Predict Score"):
         else:
             st.error(f"Server error: {response.status_code} - {response.text}")
     except requests.exceptions.ConnectionError:
-        st.error("❌ Cannot connect to FastAPI server. Make sure it's running on port 8000.")
+        st.error("❌ Cannot connect to the prediction server. Make sure it's accessible at https://studentscorepredict-ml-project-2.onrender.com")
